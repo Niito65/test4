@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --bg-page: #ffffff;
+            --card-gray: #f2f2f2;
+            --text-dark: #333333;
+            --accent-red: #c0392b; /* Rouge pour symboliser la menace */
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            background-color: var(--bg-page);
+            overflow: hidden;
+        }
+
+        .grid-container {
+            display: grid;
+            /* On utilise 3 colonnes, la dernière ligne s'adaptera */
+            grid-template-columns: repeat(3, 345px); 
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .card {
+            background-color: var(--card-gray);
+            border-radius: 12px;
+            position: relative;
+            cursor: pointer;
+            height: 190px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 15px;
+            transition: transform 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .card:hover { transform: scale(1.02); }
+
+        .card-content h3 {
+            margin: 10px 0 5px 0;
+            font-size: 16px;
+            color: var(--text-dark);
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .card-content p {
+            font-size: 12px;
+            color: #c0392b;
+            font-weight: bold;
+        }
+
+        .card-details {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: var(--accent-red);
+            color: white;
+            padding: 15px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: left;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            pointer-events: none;
+        }
+
+        .card.active .card-details {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .card-details p {
+            margin: 0;
+            font-size: 11.5px;
+            line-height: 1.4;
+        }
+
+        .icon { font-size: 35px; }
+
+        /* Centrage de la deuxième ligne (les 2 dernières cartes) */
+        .card:nth-child(4) { grid-column: 1 / 2; margin-left: 50%; }
+        .card:nth-child(5) { grid-column: 2 / 3; margin-left: 50%; }
+
+        @media (max-width: 1050px) {
+            .grid-container { grid-template-columns: repeat(2, 345px); }
+            .card:nth-child(4), .card:nth-child(5) { grid-column: auto; margin-left: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="grid-container">
+    <div class="card" onclick="this.classList.toggle('active')">
+        <div class="card-content">
+            <div class="icon">🎣</div>
+            <h3>Phishing</h3>
+            <p>(hameçonnage)</p>
+        </div>
+        <div class="card-details">
+            <p>Attention aux mails ou messages qui vous demandent de cliquer sur un lien ou de fournir vos identifiants. Le phishing est la façon la plus courante dont les hackers entrent dans les systèmes. Vérifiez toujours l’expéditeur et ne cliquez jamais sur des liens suspects.</p>
+        </div>
+    </div>
+
+    <div class="card" onclick="this.classList.toggle('active')">
+        <div class="card-content">
+            <div class="icon">🧠</div>
+            <h3>Ingénierie sociale</h3>
+            <p>Manipulation</p>
+        </div>
+        <div class="card-details">
+            <p>Les cybercriminels essaient de vous manipuler pour obtenir des informations ou un accès aux systèmes. Méfiez-vous des sollicitations inhabituelles par téléphone, mail ou chat, même si elles semblent venir d’un collègue ou d’une entreprise connue.</p>
+        </div>
+    </div>
+
+    <div class="card" onclick="this.classList.toggle('active')">
+        <div class="card-content">
+            <div class="icon">💰</div>
+            <h3>Rançongiciel</h3>
+            <p>(ransomware)</p>
+        </div>
+        <div class="card-details">
+            <p>Un rançongiciel chiffre vos fichiers et demande une rançon pour les débloquer. Il peut arriver via un mail piégé ou un site web infecté. Sauvegardez régulièrement vos données et ne payez jamais de rançon.</p>
+        </div>
+    </div>
+
+    <div class="card" onclick="this.classList.toggle('active')">
+        <div class="card-content">
+            <div class="icon">🔓</div>
+            <h3>Fuite de données</h3>
+            <p>Exposition</p>
+        </div>
+        <div class="card-details">
+            <p>Vos données professionnelles peuvent être volées si elles ne sont pas sécurisés. Les conséquences peuvent être graves : perte de données, atteinte à la réputation, voire sanctions légales.</p>
+        </div>
+    </div>
+
+    <div class="card" onclick="this.classList.toggle('active')">
+        <div class="card-content">
+            <div class="icon">🔑</div>
+            <h3>Mot de passe faible</h3>
+            <p>Accès facilité</p>
+        </div>
+        <div class="card-details">
+            <p>Des mots de passe simples ou réutilisés facilitent l’accès aux hackers. Utilisez toujours des mots de passe longs et uniques pour chaque services.</p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
